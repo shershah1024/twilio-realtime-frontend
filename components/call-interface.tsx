@@ -7,10 +7,8 @@ import Transcript from "@/components/transcript";
 import FunctionCallsPanel from "@/components/function-calls-panel";
 import { Item } from "@/components/types";
 import handleRealtimeEvent from "@/lib/handle-realtime-event";
-import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
 
-const BACKEND_URL = "wss://weather-web-socket-shahir1.replit.app";
+const BACKEND_URL = "wss://weather-web-socket-shahir1.replit.app/logs";
 
 const CallInterface = () => {
   const [selectedPhoneNumber, setSelectedPhoneNumber] = useState("+12184757309");
@@ -43,30 +41,10 @@ const CallInterface = () => {
     }
   }, [ws]);
 
-  const startCall = () => {
-    if (ws && ws.readyState === WebSocket.OPEN) {
-      const startCallEvent = {
-        type: "call.start",
-        phoneNumber: selectedPhoneNumber,
-      };
-      console.log("Starting call:", startCallEvent);
-      ws.send(JSON.stringify(startCallEvent));
-    }
-  };
-
   return (
     <div className="h-screen bg-white flex flex-col">
       <TopBar />
       <div className="flex-grow p-4 h-full overflow-hidden flex flex-col">
-        <div className="mb-4 flex justify-end">
-          <Button 
-            onClick={startCall}
-            className="bg-green-600 hover:bg-green-700 text-white"
-          >
-            <Phone className="w-4 h-4 mr-2" />
-            Start Call
-          </Button>
-        </div>
         <div className="grid grid-cols-12 gap-4 h-full">
           {/* Left Column */}
           <div className="col-span-3 flex flex-col h-full overflow-hidden">

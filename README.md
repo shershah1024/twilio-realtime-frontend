@@ -28,6 +28,13 @@ npm run dev
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
+## Making Calls
+
+To interact with the AI assistant:
+1. Open the web interface at [http://localhost:3000](http://localhost:3000)
+2. Call the Twilio phone number associated with your account
+3. The call transcript and interactions will appear in real-time on the web interface
+
 ## Features
 
 - Real-time phone calls with AI assistant
@@ -44,7 +51,7 @@ npm run dev
 
 ## Backend Configuration
 
-The application connects to a WebSocket backend at `wss://weather-web-socket-shahir1.replit.app` for handling real-time communication.
+The application connects to a WebSocket backend at `wss://weather-web-socket-shahir1.replit.app/logs` for handling real-time communication.
 
 ## License
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const BACKEND_URL = "wss://weather-web-socket-shahir1.replit.app";
+const BACKEND_URL = "wss://weather-web-socket-shahir1.replit.app/logs";
 
 // Custom hook to fetch backend tools repeatedly
 export function useBackendTools(intervalMs: number) {
