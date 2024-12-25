@@ -44,7 +44,7 @@ npm run dev
 
 ## Backend Configuration
 
-The application connects to a WebSocket backend at `wss://11ba371b-1391-4829-a844-e1f757857a0a-00-24kbo3yt9pnlk.pike.replit.dev` for handling real-time communication.
+The application connects to a WebSocket backend at `wss://weather-web-socket-shahir1.replit.app` for handling real-time communication.
 
 ## License
 

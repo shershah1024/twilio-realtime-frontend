@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const BACKEND_URL = "wss://11ba371b-1391-4829-a844-e1f757857a0a-00-24kbo3yt9pnlk.pike.replit.dev";
+const BACKEND_URL = "wss://weather-web-socket-shahir1.replit.app";
 
 // Custom hook to fetch backend tools repeatedly
 export function useBackendTools(intervalMs: number) {

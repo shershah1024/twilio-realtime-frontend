@@ -10,7 +10,7 @@ import handleRealtimeEvent from "@/lib/handle-realtime-event";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 
-const BACKEND_URL = "wss://11ba371b-1391-4829-a844-e1f757857a0a-00-24kbo3yt9pnlk.pike.replit.dev";
+const BACKEND_URL = "wss://weather-web-socket-shahir1.replit.app";
 
 const CallInterface = () => {
   const [selectedPhoneNumber, setSelectedPhoneNumber] = useState("+12184757309");
