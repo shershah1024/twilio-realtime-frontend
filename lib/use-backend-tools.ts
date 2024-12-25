@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const BACKEND_URL = "https://llm-call-1.vercel.app";
+const BACKEND_URL = "wss://llm-call-1-602205017613.us-central1.run.app";
 
 // Custom hook to fetch backend tools repeatedly
 export function useBackendTools(intervalMs: number) {
@@ -8,25 +8,36 @@ export function useBackendTools(intervalMs: number) {
 
   useEffect(() => {
     let isMounted = true;
+    const ws = new WebSocket(BACKEND_URL);
 
-    const fetchTools = () => {
-      fetch(`${BACKEND_URL}/tools`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (isMounted) setTools(data);
-        })
-        .catch((error) => {
-          // On failure, we just let it retry after interval
-          console.error("Error fetching backend tools:", error);
-        });
+    ws.onopen = () => {
+      console.log("Connected to tools websocket");
+      // Request tools when connection opens
+      ws.send(JSON.stringify({ type: "tools.list" }));
     };
 
-    fetchTools();
-    const intervalId = setInterval(fetchTools, intervalMs);
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.type === "tools.list" && isMounted) {
+        setTools(data.tools || []);
+      }
+    };
+
+    ws.onclose = () => {
+      console.log("Tools websocket disconnected");
+    };
+
+    // Set up polling through WebSocket
+    const intervalId = setInterval(() => {
+      if (ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({ type: "tools.list" }));
+      }
+    }, intervalMs);
 
     return () => {
       isMounted = false;
       clearInterval(intervalId);
+      ws.close();
     };
   }, [intervalMs]);
 

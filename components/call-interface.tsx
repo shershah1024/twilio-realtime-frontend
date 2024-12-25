@@ -10,7 +10,7 @@ import handleRealtimeEvent from "@/lib/handle-realtime-event";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 
-const BACKEND_URL = "wss://llm-call-1.vercel.app";
+const BACKEND_URL = "wss://llm-call-1-602205017613.us-central1.run.app";
 
 const CallInterface = () => {
   const [selectedPhoneNumber, setSelectedPhoneNumber] = useState("+12184757309");
